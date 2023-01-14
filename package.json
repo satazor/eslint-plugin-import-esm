@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-import-esm",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "ESLint plugin that enforces imports to follow native ESM resolution",
   "keywords": [
     "eslint",
