@@ -16,7 +16,7 @@ ruleTester.run('explicit-extension', rule, {
     {
       name: 'import relative file with extension',
       code: `import foo from './foo.js';`,
-      filename: __dirname,
+      filename: __filename,
     },
   ],
 
@@ -25,7 +25,7 @@ ruleTester.run('explicit-extension', rule, {
       name: 'import relative file without extension',
       code: `import foo from './foo';`,
       output: `import foo from './foo.js';`,
-      filename: __dirname,
+      filename: __filename,
       errors: [{ message: 'Missing extension on the import path', type: 'Literal' }],
     },
     {
@@ -39,14 +39,14 @@ ruleTester.run('explicit-extension', rule, {
       name: 'import relative directory without extension',
       code: `import lib from './lib';`,
       output: `import lib from './lib/index.js';`,
-      filename: path.resolve('.'),
+      filename: path.resolve('./foo.js'),
       errors: [{ message: 'Missing extension on the import path', type: 'Literal' }],
     },
     {
       name: 'import relative directory without extension, starting with ../',
       code: `import lib from '../lib';`,
       output: `import lib from '../lib/index.js';`,
-      filename: path.resolve('./tests'),
+      filename: path.resolve('./tests/foo.js'),
       errors: [{ message: 'Missing extension on the import path', type: 'Literal' }],
     },
     {
