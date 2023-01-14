@@ -16,6 +16,8 @@ Next, install `eslint-plugin-import-esm`:
 npm install eslint-plugin-import-esm --save-dev
 ```
 
+This plugin works well with [`eslint-plugin-import`](https://github.com/import-js/eslint-plugin-import), which validates existence of paths amongst other checks.
+
 ## Usage
 
 Using the recommended preset:
