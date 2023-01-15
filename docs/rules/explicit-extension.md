@@ -8,7 +8,7 @@
 
 Checks if the import path has an explicit extension.
 
-When `--fix` is used and a path is a directory,`index` will be appended accordingly. Please note that this package does not yet support `exports` field in `package.json`.
+When `--fix` is used and a path is a directory, `index` will be appended accordingly. Please note that this package does not yet support `exports` field in `package.json`.
 
 ## Rule Details
 
