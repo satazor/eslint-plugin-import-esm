@@ -55,5 +55,19 @@ ruleTester.run('explicit-extension', rule, {
       output: null,
       errors: [{ message: 'Missing extension on the import path', type: 'Literal' }],
     },
+    {
+      name: 'dynamic import relative file without extension',
+      code: `import('./foo');`,
+      output: `import('./foo.js');`,
+      filename: __filename,
+      errors: [{ message: 'Missing extension on the import path', type: 'Literal' }],
+    },
+    {
+      name: 'dynamic import relative directory without extension',
+      code: `import('./lib');`,
+      output: `import('./lib/index.js');`,
+      filename: path.resolve('./foo.js'),
+      errors: [{ message: 'Missing extension on the import path', type: 'Literal' }],
+    },
   ],
 });
