@@ -18,6 +18,14 @@ ruleTester.run('explicit-extension', rule, {
       code: `import foo from './foo.js';`,
       filename: __filename,
     },
+    {
+      name: 'ignore computed dynamic imports',
+      code: `
+const foo = 'foo.js';
+import(\`./lib/\${foo}\`);
+`,
+      filename: path.resolve('./foo.js'),
+    },
   ],
 
   invalid: [
