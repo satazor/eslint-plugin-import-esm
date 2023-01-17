@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/satazor/eslint-plugin-import-esm/compare/v1.1.1...v1.2.0) (2023-01-17)
+
+
+### Features
+
+* add support for exports from source ([8e1d6a2](https://github.com/satazor/eslint-plugin-import-esm/commit/8e1d6a2eda46409b3f9a3103a48d1c021c912387))
+
 ### [1.1.1](https://github.com/satazor/eslint-plugin-import-esm/compare/v1.1.0...v1.1.1) (2023-01-17)
 
 
