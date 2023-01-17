@@ -1,4 +1,4 @@
-# Validate if import paths have an explicit extension (`import-esm/explicit-extension`)
+# Validate if import and export paths have an explicit extension (`import-esm/explicit-extension`)
 
 💼 This rule is enabled in the ✅ `recommended` config.
 

@@ -47,8 +47,8 @@ Using without the recommended preset:
 ✅ Set in the `recommended` configuration.\
 🔧 Automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/user-guide/command-line-interface#--fix).
 
-| Name                                                   | Description                                         | 💼 | 🔧 |
-| :----------------------------------------------------- | :-------------------------------------------------- | :- | :- |
-| [explicit-extension](docs/rules/explicit-extension.md) | Validate if import paths have an explicit extension | ✅  | 🔧 |
+| Name                                                   | Description                                                    | 💼 | 🔧 |
+| :----------------------------------------------------- | :------------------------------------------------------------- | :- | :- |
+| [explicit-extension](docs/rules/explicit-extension.md) | Validate if import and export paths have an explicit extension | ✅  | 🔧 |
 
 <!-- end auto-generated rules list -->
