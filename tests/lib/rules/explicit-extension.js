@@ -1,6 +1,6 @@
 'use strict';
 
-const path = require('path');
+const path = require('path').posix;
 const rule = require('../../../lib/rules/explicit-extension');
 const RuleTester = require('eslint').RuleTester;
 
@@ -24,7 +24,7 @@ ruleTester.run('explicit-extension', rule, {
 const foo = 'foo.js';
 import(\`./lib/\${foo}\`);
 `,
-      filename: path.posix.resolve('./foo.js'),
+      filename: path.resolve('./foo.js'),
     },
     {
       name: 'ignore regular exports',
@@ -33,7 +33,7 @@ const foo = 'foo';
 export default foo;
 export { foo };
 `,
-      filename: path.posix.resolve('./foo.js'),
+      filename: path.resolve('./foo.js'),
     },
   ],
 
@@ -49,21 +49,21 @@ export { foo };
       name: 'import relative file without extension, starting with ../',
       code: `import foo from '../test/lib/rules/foo';`,
       output: `import foo from '../test/lib/rules/foo.js';`,
-      filename: path.posix.resolve('./tests'),
+      filename: path.resolve('./tests'),
       errors: [{ message: 'Missing extension in the source path', type: 'Literal' }],
     },
     {
       name: 'import relative directory without extension',
       code: `import lib from './lib';`,
       output: `import lib from './lib/index.js';`,
-      filename: path.posix.resolve('./foo.js'),
+      filename: path.resolve('./foo.js'),
       errors: [{ message: 'Missing extension in the source path', type: 'Literal' }],
     },
     {
       name: 'import relative directory without extension, starting with ../',
       code: `import lib from '../lib';`,
       output: `import lib from '../lib/index.js';`,
-      filename: path.posix.resolve('./tests/foo.js'),
+      filename: path.resolve('./tests/foo.js'),
       errors: [{ message: 'Missing extension in the source path', type: 'Literal' }],
     },
     {
@@ -83,7 +83,7 @@ export { foo };
       name: 'dynamic import relative directory without extension',
       code: `import('./lib');`,
       output: `import('./lib/index.js');`,
-      filename: path.posix.resolve('./foo.js'),
+      filename: path.resolve('./foo.js'),
       errors: [{ message: 'Missing extension in the source path', type: 'Literal' }],
     },
     {
