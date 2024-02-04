@@ -1,6 +1,6 @@
 'use strict';
 
-const path = require('path');
+const path = require('path').posix;
 const rule = require('../../../lib/rules/explicit-extension');
 const RuleTester = require('eslint').RuleTester;
 
