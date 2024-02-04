@@ -10,7 +10,8 @@
     "node",
     "resolution"
   ],
-  "author": "eslint-plugin-import-esm",
+  "repository": "github:satazor/eslint-plugin-import-esm",
+  "author": "André Cruz"
   "main": "./lib/index.js",
   "exports": "./lib/index.js",
   "scripts": {
