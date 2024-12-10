@@ -146,34 +146,29 @@ export { foo };
       name: 'import relative file without extension with custom extension array and existing file',
       code: `import foo from './foo';`,
       output: `import foo from './foo.services';`,
-      filename: path.resolve(__dirname, 'test.js'),
-      options: [
-        {
-          extension: ['.services', '.types', '.js'],
-          _test_existing_files: [path.resolve(__dirname, 'foo.services')]
-        }
-      ],
+      filename: __filename,
+      options: [{ extension: ['.services', '.types', '.js'] }],
       errors: [{ message: 'Missing extension in the source path', type: 'Literal' }]
     },
     {
       name: 'import relative file with existing extension but missing .js',
       code: `import foo from './foo.bar';`,
       output: `import foo from './foo.bar.js';`,
-      filename: path.resolve(__dirname, 'test.js'),
+      filename: __filename,
       errors: [{ message: 'Missing extension in the source path', type: 'Literal' }]
     },
     {
       name: 'import relative file with multiple extensions but missing .js',
       code: `import foo from './foo.bar.baz';`,
       output: `import foo from './foo.bar.baz.js';`,
-      filename: path.resolve(__dirname, 'test.js'),
+      filename: __filename,
       errors: [{ message: 'Missing extension in the source path', type: 'Literal' }]
     },
     {
       name: 'import relative file with many extensions but missing .js',
       code: `import foo from './foo.bar.baz.qux';`,
       output: `import foo from './foo.bar.baz.qux.js';`,
-      filename: path.resolve(__dirname, 'test.js'),
+      filename: __filename,
       errors: [{ message: 'Missing extension in the source path', type: 'Literal' }]
     }
   ]

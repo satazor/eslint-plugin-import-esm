@@ -32,16 +32,21 @@ import foo from './foo.bar.baz.qux.js'; // With many extensions
 import bar from './bar/index.js'; // Directory import
 ```
 
-### Options
+## Config
 
-#### `extension`
+This rule accepts an options object with the following properties:
+
+### `extension`
+
+Type: `string | string[]`\
+Default: `".js"`
 
 The extension to use when auto-fixing. Can be either a string or an array of strings. When an array is provided, the rule will:
 
 1. For files: Try to find an existing file with any of the provided extensions in order. If no file is found, use the first extension.
 2. For directories: Always use the first extension in the array.
 
-Defaults to `.js`.
+Examples:
 
 ```json
 {
@@ -57,7 +62,7 @@ Or with multiple extensions:
 }
 ```
 
-### Implementation Examples
+## Implementation Examples
 
 1. Basic usage (default configuration):
 
@@ -120,7 +125,7 @@ import foo from './foo.bar.baz.js'; // Multiple extensions with .js
 import foo from './foo.bar.baz.qux.js'; // Many extensions with .js
 ```
 
-### Behavior Details
+## Behavior Details
 
 The rule handles different scenarios based on configuration:
 
