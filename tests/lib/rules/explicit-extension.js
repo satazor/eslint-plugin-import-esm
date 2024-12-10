@@ -7,8 +7,8 @@ const RuleTester = require('eslint').RuleTester;
 const ruleTester = new RuleTester({
   parserOptions: {
     ecmaVersion: 2020,
-    sourceType: 'module',
-  },
+    sourceType: 'module'
+  }
 });
 
 ruleTester.run('explicit-extension', rule, {
@@ -16,34 +16,34 @@ ruleTester.run('explicit-extension', rule, {
     {
       name: 'import relative file with extension',
       code: `import foo from './foo.js';`,
-      filename: __filename,
+      filename: __filename
     },
     {
       name: 'import relative file with custom extension',
       code: `import foo from './foo.types';`,
       filename: __filename,
-      options: [{ extension: ['.types', '.js'] }],
+      options: [{ extension: ['.types', '.js'] }]
     },
     {
       name: 'import relative file with custom extension array',
       code: `import foo from './foo.services';`,
       filename: __filename,
-      options: [{ extension: ['.services', '.types', '.js'] }],
+      options: [{ extension: ['.services', '.types', '.js'] }]
     },
     {
       name: 'import relative file with existing extension',
       code: `import foo from './foo.bar.js';`,
-      filename: __filename,
+      filename: __filename
     },
     {
       name: 'import relative file with multiple extensions',
       code: `import foo from './foo.bar.baz.js';`,
-      filename: __filename,
+      filename: __filename
     },
     {
       name: 'import relative file with many extensions',
       code: `import foo from './foo.bar.baz.qux.js';`,
-      filename: __filename,
+      filename: __filename
     },
     {
       name: 'ignore computed dynamic imports',
@@ -51,7 +51,7 @@ ruleTester.run('explicit-extension', rule, {
 const foo = 'foo.js';
 import(\`./lib/\${foo}\`);
 `,
-      filename: path.resolve('./foo.js'),
+      filename: path.resolve('./foo.js')
     },
     {
       name: 'ignore regular exports',
@@ -60,8 +60,8 @@ const foo = 'foo';
 export default foo;
 export { foo };
 `,
-      filename: path.resolve('./foo.js'),
-    },
+      filename: path.resolve('./foo.js')
+    }
   ],
 
   invalid: [
@@ -71,8 +71,8 @@ export { foo };
       output: `import foo from './foo.js';`,
       filename: __filename,
       errors: [
-        { message: 'Missing extension in the source path', type: 'Literal' },
-      ],
+        { message: 'Missing extension in the source path', type: 'Literal' }
+      ]
     },
     {
       name: 'import relative file without extension, starting with ../',
@@ -80,8 +80,8 @@ export { foo };
       output: `import foo from '../test/lib/rules/foo.js';`,
       filename: path.resolve('./tests'),
       errors: [
-        { message: 'Missing extension in the source path', type: 'Literal' },
-      ],
+        { message: 'Missing extension in the source path', type: 'Literal' }
+      ]
     },
     {
       name: 'import relative directory without extension',
@@ -89,8 +89,8 @@ export { foo };
       output: `import lib from './lib/index.js';`,
       filename: path.resolve('./foo.js'),
       errors: [
-        { message: 'Missing extension in the source path', type: 'Literal' },
-      ],
+        { message: 'Missing extension in the source path', type: 'Literal' }
+      ]
     },
     {
       name: 'import relative directory without extension, starting with ../',
@@ -98,16 +98,16 @@ export { foo };
       output: `import lib from '../lib/index.js';`,
       filename: path.resolve('./tests/foo.js'),
       errors: [
-        { message: 'Missing extension in the source path', type: 'Literal' },
-      ],
+        { message: 'Missing extension in the source path', type: 'Literal' }
+      ]
     },
     {
       name: 'not fixable if there is no source file name',
       code: `import foo from './foo';`,
       output: null,
       errors: [
-        { message: 'Missing extension in the source path', type: 'Literal' },
-      ],
+        { message: 'Missing extension in the source path', type: 'Literal' }
+      ]
     },
     {
       name: 'dynamic import relative file without extension',
@@ -115,8 +115,8 @@ export { foo };
       output: `import('./foo.js');`,
       filename: __filename,
       errors: [
-        { message: 'Missing extension in the source path', type: 'Literal' },
-      ],
+        { message: 'Missing extension in the source path', type: 'Literal' }
+      ]
     },
     {
       name: 'dynamic import relative directory without extension',
@@ -124,8 +124,8 @@ export { foo };
       output: `import('./lib/index.js');`,
       filename: path.resolve('./foo.js'),
       errors: [
-        { message: 'Missing extension in the source path', type: 'Literal' },
-      ],
+        { message: 'Missing extension in the source path', type: 'Literal' }
+      ]
     },
     {
       name: 'export relative file without extension',
@@ -133,8 +133,8 @@ export { foo };
       output: `export { foo } from './foo.js';`,
       filename: __filename,
       errors: [
-        { message: 'Missing extension in the source path', type: 'Literal' },
-      ],
+        { message: 'Missing extension in the source path', type: 'Literal' }
+      ]
     },
     {
       name: 'export default relative file without extension',
@@ -142,8 +142,8 @@ export { foo };
       output: `export { default } from './foo.js';`,
       filename: __filename,
       errors: [
-        { message: 'Missing extension in the source path', type: 'Literal' },
-      ],
+        { message: 'Missing extension in the source path', type: 'Literal' }
+      ]
     },
     {
       name: 'export all relative file without extension',
@@ -151,8 +151,8 @@ export { foo };
       output: `export * from './foo.js';`,
       filename: __filename,
       errors: [
-        { message: 'Missing extension in the source path', type: 'Literal' },
-      ],
+        { message: 'Missing extension in the source path', type: 'Literal' }
+      ]
     },
     {
       name: 'import relative file without extension with custom extension array',
@@ -161,8 +161,8 @@ export { foo };
       filename: __filename,
       options: [{ extension: ['.types', '.js'] }],
       errors: [
-        { message: 'Missing extension in the source path', type: 'Literal' },
-      ],
+        { message: 'Missing extension in the source path', type: 'Literal' }
+      ]
     },
     {
       name: 'import relative file without extension with custom extension array and existing file',
@@ -172,12 +172,12 @@ export { foo };
       options: [
         {
           extension: ['.services', '.types', '.js'],
-          _test_existing_files: [path.resolve(__dirname, 'foo.services')],
-        },
+          _test_existing_files: [path.resolve(__dirname, 'foo.services')]
+        }
       ],
       errors: [
-        { message: 'Missing extension in the source path', type: 'Literal' },
-      ],
+        { message: 'Missing extension in the source path', type: 'Literal' }
+      ]
     },
     {
       name: 'import relative file with existing extension but missing .js',
@@ -185,8 +185,8 @@ export { foo };
       output: `import foo from './foo.bar.js';`,
       filename: path.resolve(__dirname, 'test.js'),
       errors: [
-        { message: 'Missing extension in the source path', type: 'Literal' },
-      ],
+        { message: 'Missing extension in the source path', type: 'Literal' }
+      ]
     },
     {
       name: 'import relative file with multiple extensions but missing .js',
@@ -194,8 +194,8 @@ export { foo };
       output: `import foo from './foo.bar.baz.js';`,
       filename: path.resolve(__dirname, 'test.js'),
       errors: [
-        { message: 'Missing extension in the source path', type: 'Literal' },
-      ],
+        { message: 'Missing extension in the source path', type: 'Literal' }
+      ]
     },
     {
       name: 'import relative file with many extensions but missing .js',
@@ -203,8 +203,8 @@ export { foo };
       output: `import foo from './foo.bar.baz.qux.js';`,
       filename: path.resolve(__dirname, 'test.js'),
       errors: [
-        { message: 'Missing extension in the source path', type: 'Literal' },
-      ],
-    },
-  ],
+        { message: 'Missing extension in the source path', type: 'Literal' }
+      ]
+    }
+  ]
 });
