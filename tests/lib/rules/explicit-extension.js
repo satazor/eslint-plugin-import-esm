@@ -22,7 +22,7 @@ ruleTester.run('explicit-extension', rule, {
       name: 'import relative file with custom extension',
       code: `import foo from './foo.types';`,
       filename: __filename,
-      options: [{ extension: ['.types', '.js'] }]
+      options: [{ extension: '.types' }]
     },
     {
       name: 'import relative file with custom extension array',
@@ -61,6 +61,16 @@ export default foo;
 export { foo };
 `,
       filename: path.resolve('./foo.js')
+    },
+    {
+      name: 'ignore package imports',
+      code: `
+import foo from 'foo';
+import bar from 'foo/bar';
+import baz from '@scope/package';
+import qux from '@scope/package/utils';
+`,
+      filename: __filename
     }
   ],
 
