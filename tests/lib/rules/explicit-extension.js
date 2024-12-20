@@ -73,22 +73,13 @@ import qux from '@scope/package/utils';
       filename: __filename
     },
     {
-      name: 'ignore JavaScript files',
+      name: 'keep non-JS extensions as-is',
       code: `
-import js from './code.js';
-import mjs from './module.mjs';
-import cjs from './common.cjs';
-import jsx from './react.jsx';
-`,
-      filename: __filename
-    },
-    {
-      name: 'add .js to non-JavaScript/TypeScript files',
-      code: `
-import data from './data.json.js';
-import styles from './styles.css.js';
-import doc from './doc.md.js';
-import config from './config.yaml.js';
+import data from './data.json';
+import styles from './styles.css';
+import img from './image.png';
+import doc from './doc.md';
+import config from './config.yaml';
 `,
       filename: __filename
     }
@@ -99,6 +90,13 @@ import config from './config.yaml.js';
       name: 'import relative file without extension',
       code: `import foo from './foo';`,
       output: `import foo from './foo.js';`,
+      filename: __filename,
+      errors: [{ message: 'Missing extension in the source path', type: 'Literal' }]
+    },
+    {
+      name: 'import relative file with unknown extension',
+      code: `import foo from './foo.unknown';`,
+      output: `import foo from './foo.unknown.js';`,
       filename: __filename,
       errors: [{ message: 'Missing extension in the source path', type: 'Literal' }]
     },
@@ -216,16 +214,9 @@ import config from './config.yaml.js';
       errors: [{ message: 'Missing extension in the source path', type: 'Literal' }]
     },
     {
-      name: 'import JSON file without .js extension',
-      code: `import data from './data.json';`,
-      output: `import data from './data.json.js';`,
-      filename: __filename,
-      errors: [{ message: 'Missing extension in the source path', type: 'Literal' }]
-    },
-    {
-      name: 'import CSS file without .js extension',
-      code: `import styles from './styles.css';`,
-      output: `import styles from './styles.css.js';`,
+      name: 'import JavaScript file without .js extension',
+      code: `import foo from './foo.jsx';`,
+      output: `import foo from './foo.jsx.js';`,
       filename: __filename,
       errors: [{ message: 'Missing extension in the source path', type: 'Literal' }]
     }
