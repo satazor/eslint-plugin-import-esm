@@ -71,6 +71,26 @@ import baz from '@scope/package';
 import qux from '@scope/package/utils';
 `,
       filename: __filename
+    },
+    {
+      name: 'ignore JavaScript files',
+      code: `
+import js from './code.js';
+import mjs from './module.mjs';
+import cjs from './common.cjs';
+import jsx from './react.jsx';
+`,
+      filename: __filename
+    },
+    {
+      name: 'add .js to non-JavaScript/TypeScript files',
+      code: `
+import data from './data.json.js';
+import styles from './styles.css.js';
+import doc from './doc.md.js';
+import config from './config.yaml.js';
+`,
+      filename: __filename
     }
   ],
 
@@ -178,6 +198,34 @@ import qux from '@scope/package/utils';
       name: 'import relative file with many extensions but missing .js',
       code: `import foo from './foo.bar.baz.qux';`,
       output: `import foo from './foo.bar.baz.qux.js';`,
+      filename: __filename,
+      errors: [{ message: 'Missing extension in the source path', type: 'Literal' }]
+    },
+    {
+      name: 'import TypeScript file without .js extension',
+      code: `import foo from './foo.ts';`,
+      output: `import foo from './foo.ts.js';`,
+      filename: __filename,
+      errors: [{ message: 'Missing extension in the source path', type: 'Literal' }]
+    },
+    {
+      name: 'import TSX file without .js extension',
+      code: `import foo from './foo.tsx';`,
+      output: `import foo from './foo.tsx.js';`,
+      filename: __filename,
+      errors: [{ message: 'Missing extension in the source path', type: 'Literal' }]
+    },
+    {
+      name: 'import JSON file without .js extension',
+      code: `import data from './data.json';`,
+      output: `import data from './data.json.js';`,
+      filename: __filename,
+      errors: [{ message: 'Missing extension in the source path', type: 'Literal' }]
+    },
+    {
+      name: 'import CSS file without .js extension',
+      code: `import styles from './styles.css';`,
+      output: `import styles from './styles.css.js';`,
       filename: __filename,
       errors: [{ message: 'Missing extension in the source path', type: 'Literal' }]
     }
