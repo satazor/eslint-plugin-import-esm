@@ -4,7 +4,7 @@ ESLint plugin that enforces imports to follow native ESM resolution.
 
 ## Installation
 
-You'll first need to install [ESLint](https://eslint.org/):
+You'll first need to install [ESLint v9](https://eslint.org/):
 
 ```sh
 npm i eslint --save-dev
@@ -22,21 +22,30 @@ This plugin works well with [`eslint-plugin-import`](https://github.com/import-j
 
 Using the recommended preset:
 
-```json
-{
-  "extends": ["plugin:import-esm/recommended"]
-}
+```js
+import { defineConfig } from "eslint/config";
+import importEsmPlugin from 'eslint-plugin-import-esm';
+
+export default defineConfig([
+  importEsmPlugin.configs.recommended,
+  ...
+]);
 ```
 
 Using without the recommended preset:
 
-```json
-{
-  "plugins": ["import-esm"],
-  "rules": {
-    "import-esm/explicit-extension": ["error", { "extension": ".ms" }]
+```js
+import { defineConfig } from "eslint/config";
+import importEsmPlugin from 'eslint-plugin-import-esm';
+
+export default defineConfig([
+  {
+    plugins: { 'import-esm': importEsmPlugin },
+    rules: {
+      'import-esm/explicit-extension': ['error', { extension: '.mjs' }]
+    }
   }
-}
+]);
 ```
 
 ## Rules
