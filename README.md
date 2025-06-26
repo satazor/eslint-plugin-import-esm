@@ -61,3 +61,13 @@ export default defineConfig([
 | [explicit-extension](docs/rules/explicit-extension.md) | Validate if import and export paths have an explicit extension | ✅  | 🔧 |
 
 <!-- end auto-generated rules list -->
+
+## Configs
+
+<!-- begin auto-generated configs list -->
+
+|    | Name          |
+| :- | :------------ |
+| ✅  | `recommended` |
+
+<!-- end auto-generated configs list -->

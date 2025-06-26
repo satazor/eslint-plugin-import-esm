@@ -1,12 +1,10 @@
 'use strict';
 
 const { defineConfig } = require('eslint/config');
-
 const globals = require('globals');
 const js = require('@eslint/js');
 const eslintPlugin = require('eslint-plugin-eslint-plugin');
 const nodePlugin = require('eslint-plugin-n');
-
 const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
 
 module.exports = defineConfig([
